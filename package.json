@@ -76,6 +76,7 @@
     "chalk": "^2.4.2",
     "magic-string": "^0.25.3",
     "minimist": "^1.2.0",
-    "regexpu-core": "^4.5.4"
+    "regexpu-core": "^4.5.4",
+    "shallow-clone": "^3.0.1"
   }
 }

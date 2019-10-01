@@ -1,6 +1,7 @@
 import { Parser } from 'acorn';
 import acornJsx from 'acorn-jsx';
 import acornDynamicImport from 'acorn-dynamic-import';
+import clone from 'shallow-clone';
 import Program from './program/Program.js';
 import { features, matrix } from './support.js';
 import getSnippet from './utils/getSnippet.js';
@@ -49,6 +50,10 @@ export function target(target) {
 }
 
 export function transform(source, options = {}) {
+	// We clone the options object because we mutate it later on. If we don't, then
+	// issues crop up if the caller re-uses the same options object between calls
+	// to this function.
+	options = clone(options);
 	let ast;
 	let jsx = null;
 
